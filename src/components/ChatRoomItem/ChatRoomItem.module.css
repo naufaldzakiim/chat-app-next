@@ -2,7 +2,17 @@
   user-select: none;
   
   @mixin hover {
-    background-color: var(--mantine-color-blue-1);
+    background-color: var(--mantine-color-blue-0);
+    cursor: pointer;
+  }
+}
+
+.chatRoomItem_active {
+  user-select: none;
+  background-color: var(--mantine-color-blue-1);
+  
+  @mixin hover {
+    background-color: var(--mantine-color-blue-2);
     cursor: pointer;
   }
 }

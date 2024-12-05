@@ -88,7 +88,7 @@ function Message({
                 {chat.senderName}
               </Text>
             )}
-            <video src={chat.media_url} controls style={{ maxWidth: "100%" }} />
+            <video src={chat.media_url} controls style={{ width: "100%", maxWidth: "512px" }} />
           </Flex>
         </Paper>
       )}

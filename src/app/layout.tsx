@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Chat App",
+  title: "WhatsCatt",
   description: "A chat app built with Next.js and Mantine",
 };
 

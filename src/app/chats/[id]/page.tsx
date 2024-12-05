@@ -1,27 +1,29 @@
 "use client";
-import React, { useState } from "react";
-import { Stack, ScrollArea } from "@mantine/core";
-import ChatList from "@/components/ChatList";
-import ChatInput from "@/components/Input/ChatInput";
-import ChatRoomTopBar from "@/components/ChatRoomTopBar";
-import { getChatRoomById } from "@/utils/data-fetch";
-import { IChatRoom } from "@/types/chat";
-import { ChatItemProps } from "@/components/ChatItem";
+import React from "react";
+import { Grid } from "@mantine/core";
+import ChatRoomSection from "../ChatRoomSection";
+import ChatRoomListSection from "../ChatRoomListSection";
 
 export default function page({ params }: { params: { id: string } }) {
-  const chatRoom = getChatRoomById(parseInt(params.id)) as IChatRoom;
-  const chats = chatRoom.comments as ChatItemProps[];
-  const isGroupChat = chatRoom.room.participant.length > 2;
-
-  const [value, setValue] = useState("");
-
   return (
-    <Stack gap={0}>
-      <ChatRoomTopBar chatRoom={chatRoom.room} isGroupChat={isGroupChat} />
-      <ScrollArea h={`calc(100vh - 90px)`} bg="gray.3">
-        <ChatList chats={chats} isGroupChat={isGroupChat}/>
-      </ScrollArea>
-      <ChatInput value={value} setValue={setValue} />
-    </Stack>
+    // <Grid
+    //   h="100%"
+    //   styles={{
+    //     inner: { margin: 0, height: "100%", width: "100%" },
+    //   }}
+    // >
+    //   <Grid.Col
+    //     span={{ base: "auto", sm: "content" }}
+    //     w={{ base: "100%", xs: "20em" }}
+    //     p={0}
+    //     visibleFrom="sm"
+    //   >
+    //     <ChatRoomListSection />
+    //   </Grid.Col>
+    //   <Grid.Col span="auto" p={0}>
+    //     <ChatRoomSection id={params.id} />
+    //   </Grid.Col>
+    // </Grid>
+    <ChatRoomSection id={params.id} />
   );
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { Stack } from "@mantine/core";
 import ChatItem from "@/components/ChatItem";
-import { IChat } from "@/types/chat";
 import { ChatItemProps } from "@/components/ChatItem";
 
 export default function ChatList({ chats, isGroupChat = false }: { chats: ChatItemProps[]; isGroupChat?: boolean }) {

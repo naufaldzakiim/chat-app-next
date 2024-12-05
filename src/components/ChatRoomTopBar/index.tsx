@@ -15,7 +15,7 @@ export default function ChatRoomTopBar({
   const members = chatRoom.participant.map((member) => member.name).join(", ");
 
   return (
-    <Grid justify="flex-start" align="center" gutter={4} px={8} py={4}>
+    <Grid justify="flex-start" align="center" gutter={4} px={8} py={8}>
       <Grid.Col span="content">
         <ActionIcon variant="subtle" radius="xl" size="lg" onClick={() => {router.push('/chats')}} >
           <IconChevronLeft

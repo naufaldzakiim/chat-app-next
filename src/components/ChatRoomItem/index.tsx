@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { Avatar, Flex, Text, Group, Card, ThemeIcon } from "@mantine/core";
 import { IconPhoto, IconVideo, IconFileDescription } from "@tabler/icons-react";
 import { IChatRoom, ChatType } from "@/types/chat";
@@ -13,11 +13,14 @@ export default function ChatRoomItem({ chatRoom }: { chatRoom: IChatRoom }) {
   const senderName = chatRoom.room.participant.find(
     (participant) => participant.id === lastChat.sender
   )?.name;
+
   const router = useRouter();
+  const params = useParams<{id: string}>();
+  const isActive = params.id === (chatRoom.room.id).toString();
 
   return (
     <Card
-      className={classes.chatRoomItem}
+      className={isActive ? classes.chatRoomItem_active : classes.chatRoomItem}
       onClick={() => {
         router.push(`/chats/${chatRoom.room.id}`);
       }}

@@ -1,55 +1,71 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { IChatRoom } from "@/types/chat";
-import { getChatRooms } from "@/utils/data-fetch";
-import ChatRoomList from "@/components/ChatRoomList";
-import ChatRoomListTopBar from "@/components/ChatRoomListTopBar";
-import { Stack, Tabs, ScrollArea } from "@mantine/core";
+import React from "react";
+import { Grid, Stack, ThemeIcon, Text, Center } from "@mantine/core";
+import ChatRoomListSection from "./ChatRoomListSection";
+import { IconBubbleText } from "@tabler/icons-react";
 
 export default function ChatsPage() {
-  const [data, setData] = useState<IChatRoom[]>([]);
-  const [filteredData, setFilteredData] = useState<IChatRoom[]>(data);
-  const [search, setSearch] = useState("");
-  const [activeTab, setActiveTab] = useState<string | null>("all");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    try {
-      setLoading(true);
-      const chatRooms = getChatRooms(activeTab || "all");
-      setData(chatRooms);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [activeTab]);
-
-  useEffect(() => {
-    setFilteredData(data);
-  }, [data]);
-
-  useEffect(() => {
-    setFilteredData(
-      data.filter((room) =>
-        room.room.name.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-  }, [search]);
-
   return (
-    <Stack gap={0}>
-      <ChatRoomListTopBar search={search} setSearch={setSearch} />
-      <Tabs radius="xl" value={activeTab} onChange={setActiveTab} px={8} py={4}>
-        <Tabs.List grow justify="center">
-          <Tabs.Tab value="all">All</Tabs.Tab>
-          <Tabs.Tab value="people">People</Tabs.Tab>
-          <Tabs.Tab value="group">Group</Tabs.Tab>
-        </Tabs.List>
-      </Tabs>
-      <ScrollArea h={`calc(100vh - 90px)`}>
-        <ChatRoomList chatRooms={filteredData} loading={loading} />
-      </ScrollArea>
-    </Stack>
+    // <Grid
+    //   h="100%"
+    //   styles={{
+    //     inner: { margin: 0, height: "100%", width: "100%" },
+    //   }}
+    // >
+    //   <Grid.Col
+    //     span={{ base: "auto", sm: "content" }}
+    //     w={{ base: "100%", xs: "20em" }}
+    //     p={0}
+    //   >
+    //     <ChatRoomListSection />
+    //   </Grid.Col>
+    //   <Grid.Col span="auto" visibleFrom="sm" p={0}>
+    //     <Stack bg="gray.3" h="100%" px={64} justify="center" gap={0}>
+    //       <Center>
+    //         <ThemeIcon variant="transparent" color="gray" radius="xl" size={96}>
+    //           <IconBubbleText style={{ width: "70%", height: "70%" }} />
+    //         </ThemeIcon>
+    //       </Center>
+    //       <Center>
+    //         <Stack gap={0} maw={512}>
+    //           <Center>
+    //             <Text size="lg" fw={500}>
+    //               WhatsCatt
+    //             </Text>
+    //           </Center>
+    //           <Center>
+    //             <Text size="md" ta="center" c="dark.2">
+    //               Enjoy seamless messaging with a user-friendly interface and a
+    //               variety of features to enhance your chatting experience.
+    //             </Text>
+    //           </Center>
+    //         </Stack>
+    //       </Center>
+    //     </Stack>
+    //   </Grid.Col>
+    // </Grid>
+
+<Stack bg="gray.3" h="100%" px={64} justify="center" gap={0}>
+<Center>
+  <ThemeIcon variant="transparent" color="gray" radius="xl" size={96}>
+    <IconBubbleText style={{ width: "70%", height: "70%" }} />
+  </ThemeIcon>
+</Center>
+<Center>
+  <Stack gap={0} maw={512}>
+    <Center>
+      <Text size="lg" fw={500}>
+        WhatsCatt
+      </Text>
+    </Center>
+    <Center>
+      <Text size="md" ta="center" c="dark.2">
+        Enjoy seamless messaging with a user-friendly interface and a
+        variety of features to enhance your chatting experience.
+      </Text>
+    </Center>
+  </Stack>
+</Center>
+</Stack>
   );
 }
