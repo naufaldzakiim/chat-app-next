@@ -1,9 +1,9 @@
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Avatar, Flex, Text, Group, Card, ThemeIcon,  } from "@mantine/core";
+import { Avatar, Flex, Text, Group, Card, ThemeIcon } from "@mantine/core";
 import { IconPhoto, IconVideo, IconFileDescription } from "@tabler/icons-react";
 import { IChatRoom, ChatType } from "@/types/chat";
-import classes from "./ChatRoomItem.module.css"
+import classes from "./ChatRoomItem.module.css";
 
 export default function ChatRoomItem({ chatRoom }: { chatRoom: IChatRoom }) {
   const roomName = chatRoom.room.name;
@@ -16,7 +16,12 @@ export default function ChatRoomItem({ chatRoom }: { chatRoom: IChatRoom }) {
   const router = useRouter();
 
   return (
-    <Card className={classes.chatRoomItem} onClick={() => {router.push(`/chats/${chatRoom.room.id}`)}}>
+    <Card
+      className={classes.chatRoomItem}
+      onClick={() => {
+        router.push(`/chats/${chatRoom.room.id}`);
+      }}
+    >
       <Group>
         <Avatar src={roomImage} radius="xl" />
         <Flex direction="column" maw="80%">
@@ -40,7 +45,7 @@ function Message({
   type,
   isGroupChat = false,
   message,
-  sender
+  sender,
 }: {
   type: ChatType;
   isGroupChat: boolean;
@@ -48,31 +53,38 @@ function Message({
   sender?: string;
 }) {
   return (
-    <Group justify="flex-start" gap={0}>
-      {isGroupChat && (
+    <>
+      {type == "text" && (
         <Text c="dimmed" size="xs" truncate="end">
-          {sender}:{" "}
+          {isGroupChat ? `${sender}: ${message}` : message}
         </Text>
       )}
+
       {type !== "text" && (
-        <ThemeIcon variant="white" size="sm" color="gray" bg="none">
-          {type === "image" && (
-            <IconPhoto style={{ width: "70%", height: "70%" }} />
+        <Group justify="flex-start" gap={0}>
+          {isGroupChat && (
+            <Text c="dimmed" size="xs" truncate="end">
+              {`${sender}:`}
+            </Text>
           )}
-          {type === "video" && (
-            <IconVideo style={{ width: "70%", height: "70%" }} />
-          )}
-          {type === "pdf" && (
-            <IconFileDescription style={{ width: "70%", height: "70%" }} />
-          )}
-        </ThemeIcon>
+          <ThemeIcon variant="white" size="sm" color="gray" bg="none" ml={isGroupChat ? 0 : -4}>
+            {type === "image" && (
+              <IconPhoto style={{ width: "70%", height: "70%" }} />
+            )}
+            {type === "video" && (
+              <IconVideo style={{ width: "70%", height: "70%" }} />
+            )}
+            {type === "pdf" && (
+              <IconFileDescription style={{ width: "70%", height: "70%" }} />
+            )}
+          </ThemeIcon>
+          <Text size="xs" c="dimmed" truncate="end">
+            {type === "image" && "Photo"}
+            {type === "video" && "Video"}
+            {type === "pdf" && "Document"}
+          </Text>
+        </Group>
       )}
-      <Text size="xs" c="dimmed" truncate="end">
-        {type === "image" && "Photo"}
-        {type === "video" && "Video"}
-        {type === "pdf" && "Document"}
-        {type === "text" && message}
-      </Text>
-    </Group>
+    </>
   );
 }
