@@ -1,24 +1,4 @@
-interface IData {
-  results: {
-    room: {
-      name: string;
-      id: number;
-      image_url: string;
-      participant: {
-        id: string;
-        name: string;
-        role?: number;
-      }[];
-    };
-    comments: {
-      id: number;
-      type: string;
-      message: string;
-      sender: string;
-      media_url?: string;
-    }[];
-  }[];
-}
+import {IData, USER_ROLE} from "@/types/chat";
 
 export const data: IData = {
   results: [
@@ -31,17 +11,17 @@ export const data: IData = {
           {
             id: "admin@mail.com",
             name: "Admin",
-            role: 0,
+            role: USER_ROLE.Admin,
           },
           {
             id: "agent@mail.com",
             name: "Agent A",
-            role: 1,
+            role: USER_ROLE.Agent,
           },
           {
             id: "customer@mail.com",
             name: "king customer",
-            role: 2,
+            role: USER_ROLE.Customer,
           },
         ],
       },
@@ -77,18 +57,25 @@ export const data: IData = {
           message: "Baik, silahkan kirimkan lampiran bukti pembayarannya",
           sender: "agent@mail.com",
         },
+        {
+          id: 885517,
+          type: "pdf",
+          message: "manual-product.pdf",
+          media_url: "https://manual-product-fzk.tiiny.site/",
+          sender: "customer@mail.com",
+        },
       ],
     },
     {
       room: {
-        name: "Agent B",
+        name: "Atmin Catoru",
         id: 12457,
         image_url:
           "https://ih1.redbubble.net/image.5326001228.6216/raf,360x360,075,t,fafafa:ca443f4786.jpg",
         participant: [
           {
-            id: "agentb@mail.com",
-            name: "Agent B",
+            id: "atmincatoru@mail.com",
+            name: "Atmin Catoru",
           },
           {
             id: "customer@mail.com",
@@ -198,6 +185,90 @@ export const data: IData = {
           message: "cat-oghe.jpg",
           media_url:
             "https://i.pinimg.com/originals/39/b0/38/39b0387991f713f5154683ab4c277bb7.jpg",
+          sender: "customer@mail.com",
+        },
+      ],
+    },
+    {
+      room: {
+        name: "Product B",
+        id: 15458,
+        image_url: "https://cdn.rri.co.id/berita/Palangkaraya/o/1725240142241-IMG_2131/ai7sj55d0mo35hh.jpeg",
+        participant: [
+          {
+            id: "admin@mail.com",
+            name: "Admin",
+            role: USER_ROLE.Admin,
+          },
+          {
+            id: "agentb@mail.com",
+            name: "Agent B",
+            role: USER_ROLE.Agent,
+          },
+          {
+            id: "customer@mail.com",
+            name: "king customer",
+            role: USER_ROLE.Customer,
+          },
+        ],
+      },
+      comments: [
+        {
+          id: 985512,
+          type: "text",
+          message: "Selamat malam",
+          sender: "customer@mail.com",
+        },
+        {
+          id: 985513,
+          type: "text",
+          message: "Malam",
+          sender: "agentb@mail.com",
+        },
+        {
+          id: 985514,
+          type: "text",
+          message: "Ada yang bisa saya bantu?",
+          sender: "agentb@mail.com",
+        },
+        {
+          id: 985515,
+          type: "text",
+          message:
+            "Apakah ada video tutorial untuk product ini?",
+          sender: "customer@mail.com",
+        },
+        {
+          id: 985516,
+          type: "video",
+          message: "acumalaka.mp4",
+          media_url: "https://v16-webapp-prime.tiktok.com/video/tos/useast2a/tos-useast2a-pve-0037-aiso/ca5c143f47ab4319a113d591d5ffa7c4/?a=1988&bti=ODszNWYuMDE6&ch=0&cr=3&dr=0&lr=all&cd=0%7C0%7C0%7C&cv=1&br=572&bt=286&cs=0&ds=1&ft=-Csk_mc3PD12NISP0E-Uxe1FSY6e3wv25xcAp&mime_type=video_mp4&qs=0&rc=ODc1O2U2ZmQ7NzxnNmlkZEBpM3BkbTY6Zjg8ZjMzZjgzM0A0XjViMmBhXmIxNmM1NmBeYSNeMG1ncjRnL15gLS1kL2Nzcw%3D%3D&btag=e000b0000&expire=1733387978&l=20241205023933F5D5ABC8B93E14451119&ply_type=2&policy=2&signature=18b213a2d4e707f2e509ea32f00aced3&tk=tt_chain_token",
+          sender: "agentb@mail.com",
+        },
+      ],
+    },
+    {
+      room: {
+        name: "Okarun",
+        id: 12459,
+        image_url:
+          "https://i.kym-cdn.com/photos/images/newsfeed/002/925/412/9d1.jpeg",
+        participant: [
+          {
+            id: "kentakakura@mail.com",
+            name: "Okarun",
+          },
+          {
+            id: "customer@mail.com",
+            name: "king customer",
+          },
+        ],
+      },
+      comments: [
+        {
+          id: 995512,
+          type: "text",
+          message: "Halo",
           sender: "customer@mail.com",
         },
       ],
