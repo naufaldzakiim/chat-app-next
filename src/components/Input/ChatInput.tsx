@@ -10,7 +10,14 @@ export default function ChatInput({
   setValue: (value: string) => void;
 }) {
   return (
-    <Grid justify="space-between" align="center" gutter={8} px={8} pb={8} bg="gray.3">
+    <Grid
+      justify="space-between"
+      align="center"
+      gutter={8}
+      px={8}
+      pb={8}
+      bg="gray.3"
+    >
       <Grid.Col span="auto">
         <Input
           placeholder="Type a message..."

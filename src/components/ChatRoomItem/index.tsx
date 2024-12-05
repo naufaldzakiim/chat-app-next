@@ -15,8 +15,8 @@ export default function ChatRoomItem({ chatRoom }: { chatRoom: IChatRoom }) {
   )?.name;
 
   const router = useRouter();
-  const params = useParams<{id: string}>();
-  const isActive = params.id === (chatRoom.room.id).toString();
+  const params = useParams<{ id: string }>();
+  const isActive = params.id === chatRoom.room.id.toString();
 
   return (
     <Card
@@ -70,7 +70,13 @@ function Message({
               {`${sender}:`}
             </Text>
           )}
-          <ThemeIcon variant="white" size="sm" color="gray" bg="none" ml={isGroupChat ? 0 : -4}>
+          <ThemeIcon
+            variant="white"
+            size="sm"
+            color="gray"
+            bg="none"
+            ml={isGroupChat ? 0 : -4}
+          >
             {type === "image" && (
               <IconPhoto style={{ width: "70%", height: "70%" }} />
             )}

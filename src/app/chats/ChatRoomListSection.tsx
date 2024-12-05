@@ -35,7 +35,7 @@ export default function ChatsRoomListSection() {
         room.room.name.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search]);
+  }, [search, data]);
 
   return (
     <Stack gap={0}>
@@ -47,7 +47,7 @@ export default function ChatsRoomListSection() {
           <Tabs.Tab value="group">Group</Tabs.Tab>
         </Tabs.List>
       </Tabs>
-      <ScrollArea h={`calc(100vh - 90px)`}>
+      <ScrollArea h={`calc(100vh - 98px)`}>
         <ChatRoomList chatRooms={filteredData} loading={loading} />
       </ScrollArea>
     </Stack>

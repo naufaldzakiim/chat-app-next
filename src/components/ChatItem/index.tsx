@@ -88,7 +88,11 @@ function Message({
                 {chat.senderName}
               </Text>
             )}
-            <video src={chat.media_url} controls style={{ width: "100%", maxWidth: "512px" }} />
+            <video
+              src={chat.media_url}
+              controls
+              style={{ width: "100%", maxWidth: "512px" }}
+            />
           </Flex>
         </Paper>
       )}
@@ -112,7 +116,7 @@ function Message({
                   fetch(chat.media_url as string).then((response) => {
                     response.blob().then((blob) => {
                       const fileURL = window.URL.createObjectURL(blob);
-                      let alink = document.createElement("a");
+                      const alink = document.createElement("a");
                       alink.href = fileURL;
                       alink.download = chat.message;
                       alink.click();

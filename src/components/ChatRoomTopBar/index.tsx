@@ -17,7 +17,14 @@ export default function ChatRoomTopBar({
   return (
     <Grid justify="flex-start" align="center" gutter={4} px={8} py={8}>
       <Grid.Col span="content">
-        <ActionIcon variant="subtle" radius="xl" size="lg" onClick={() => {router.push('/chats')}} >
+        <ActionIcon
+          variant="subtle"
+          radius="xl"
+          size="lg"
+          onClick={() => {
+            router.push("/chats");
+          }}
+        >
           <IconChevronLeft
             style={{ width: "70%", height: "70%" }}
             stroke={1.5}
@@ -25,11 +32,7 @@ export default function ChatRoomTopBar({
         </ActionIcon>
       </Grid.Col>
       <Grid.Col span="content">
-        <Avatar
-          src={chatRoom.image_url}
-          radius="xl"
-          size="md"
-        />
+        <Avatar src={chatRoom.image_url} radius="xl" size="md" />
       </Grid.Col>
       <Grid.Col span="auto">
         <Stack align="stretch" justify="center" gap={0} pl={4}>

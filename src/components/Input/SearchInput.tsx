@@ -5,7 +5,7 @@ import { IconSearch } from "@tabler/icons-react";
 export default function SearchInput({
   search,
   setSearch,
-  placeholder = ""
+  placeholder = "",
 }: {
   search: string;
   setSearch: (value: string) => void;

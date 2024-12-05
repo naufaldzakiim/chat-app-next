@@ -54,7 +54,7 @@ export default function LoginPage() {
       align="center"
       direction="column"
     >
-      <Container w={{ base: "100vw", xs: 570, sm: 760, md: 960 }}>
+      <Container px={32} w={{ base: "100vw", xs: 572 }}>
         <Title ta="center" fw={900}>
           Welcome back!
         </Title>
