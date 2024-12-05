@@ -12,12 +12,14 @@ export default function page({ params }: { params: { id: string } }) {
   const chats = chatRoom.comments as ChatItemProps[];
   const isGroupChat = chatRoom.room.participant.length > 2;
 
+  const [value, setValue] = useState("");
+
   return (
     <Stack gap={0}>
-      <ScrollArea h={`calc(100vh - 90px)`} bg="gray.3">
+      <ScrollArea h={`calc(100vh - 44px)`} bg="gray.3">
         <ChatList chats={chats} isGroupChat={isGroupChat}/>
       </ScrollArea>
-      <ChatInput />
+      <ChatInput value={value} setValue={setValue} />
     </Stack>
   );
 }
