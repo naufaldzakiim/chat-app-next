@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Stack, ScrollArea } from "@mantine/core";
 import ChatList from "@/components/ChatList";
 import ChatInput from "@/components/Input/ChatInput";
+import ChatRoomTopBar from "@/components/ChatRoomTopBar";
 import { getChatRoomById } from "@/utils/data-fetch";
 import { IChatRoom } from "@/types/chat";
 import { ChatItemProps } from "@/components/ChatItem";
@@ -16,7 +17,8 @@ export default function page({ params }: { params: { id: string } }) {
 
   return (
     <Stack gap={0}>
-      <ScrollArea h={`calc(100vh - 44px)`} bg="gray.3">
+      <ChatRoomTopBar chatRoom={chatRoom.room} isGroupChat={isGroupChat} />
+      <ScrollArea h={`calc(100vh - 90px)`} bg="gray.3">
         <ChatList chats={chats} isGroupChat={isGroupChat}/>
       </ScrollArea>
       <ChatInput value={value} setValue={setValue} />
